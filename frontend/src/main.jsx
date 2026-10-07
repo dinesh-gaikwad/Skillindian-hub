@@ -3,6 +3,7 @@ import {createRoot} from 'react-dom/client';
 import {BrowserRouter,useLocation,useNavigate,useParams} from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import './style.css';
+import V4CommandCenter from './upgrades/V4CommandCenter.jsx';
 import './upgrades/v3.css';
 import V3CommandCenter from './upgrades/V3CommandCenter.jsx';
 
@@ -38,6 +39,7 @@ git:['Git','Version control fundamentals'],github:['GitHub','Collaboration and s
 ['mock-dashboard']:['Interview Arena','Live readiness dashboard'],['mock-python']:['Python Mock','Python technical round'],['mock-django']:['Django Mock','Backend technical round'],['mock-react']:['React Mock','Frontend technical round'],['mock-sql']:['SQL Mock','Database technical round'],['mock-system-design']:['System Design Mock','Architecture round'],['mock-project']:['Project Mock','EntreSkill Hub deep dive'],['coding-round']:['Coding Round','Timed coding interview'],['hr-round']:['HR Round','Behavioral interview'],['final-interview']:['Final Interview','Full 10 LPA simulation']
 };
 pageMeta.v3=['V3 AI Developer Command Center','Premium AI developer career command center'];
+const v4Page={id:'v4',title:'V4 AI Command Center'};
 const allPages=groups.flatMap(g=>g.pages);
 const title=(id)=>pageMeta[id]?.[0]||id.replaceAll('-',' ');
 
@@ -78,6 +80,7 @@ function App(){
 }
 
 function Page({page,onToast}){
+  if(page==='v4') return <V4CommandCenter/>;
  if(page==='v3') return <V3CommandCenter/>;
  const [tab,setTab]=useState('Overview'); const [done,setDone]=useState(false); const [query,setQuery]=useState(''); const [score,setScore]=useState(72); const [dashboard,setDashboard]=useState(null); const [apiState,setApiState]=useState('');
  const meta=pageMeta[page]||[title(page),'Interactive learning workspace']; const isMock=page.startsWith('mock-')||page==='coding-round'||page==='final-interview'; const isProject=page.startsWith('project-'); const isAI=page.startsWith('ai-')||['rag','embeddings','vector-search'].includes(page); const isCode=['python-lab','frontend-lab','backend-lab','data-lab','ai-lab','coding-round'].includes(page);
