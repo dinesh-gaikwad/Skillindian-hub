@@ -1,0 +1,28 @@
+.v8-shell{min-height:100vh;padding:28px;max-width:1450px;margin:auto}
+.v8-top{display:flex;justify-content:space-between;gap:24px;align-items:center;margin-bottom:25px}
+.v8-kicker{font-size:12px;font-weight:800;letter-spacing:2px;opacity:.65}
+.v8-top h1{font-size:38px;margin:6px 0}
+.v8-top p{opacity:.7;margin:0}
+.v8-score{min-width:130px;text-align:center;padding:20px;border:1px solid rgba(127,127,127,.25);border-radius:18px}
+.v8-score strong{display:block;font-size:30px}
+.v8-score span{font-size:12px;opacity:.7}
+.v8-actions{display:flex;gap:12px;align-items:center;margin-bottom:20px}
+.v8-actions button{border:0;border-radius:12px;padding:13px 18px;font-weight:800;cursor:pointer}
+.v8-actions button:disabled{opacity:.55;cursor:wait}
+.v8-pill,.v8-ok,.v8-wait{font-size:11px;font-weight:800;padding:7px 10px;border-radius:999px}
+.v8-pill{border:1px solid rgba(127,127,127,.25)}
+.v8-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.v8-card{display:grid;grid-template-columns:42px 1fr auto;gap:14px;align-items:center;text-align:left;padding:18px;border:1px solid rgba(127,127,127,.2);border-radius:16px;background:transparent;cursor:pointer}
+.v8-card h3{margin:0 0 5px;font-size:15px}
+.v8-card p{margin:0;font-size:12px;opacity:.65}
+.v8-num{font-weight:900;opacity:.45}
+.v8-ok{border:1px solid rgba(50,180,100,.35)}
+.v8-wait{border:1px solid rgba(127,127,127,.25);opacity:.65}
+.v8-console{margin-top:20px;border:1px solid rgba(127,127,127,.2);border-radius:16px;overflow:hidden}
+.v8-console-head{display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid rgba(127,127,127,.2);font-size:12px;font-weight:800}
+.v8-console pre{padding:18px;margin:0;white-space:pre-wrap;font-size:12px;line-height:1.7;overflow:auto}
+.v8-note{margin-top:14px;padding:14px;border-radius:12px;font-size:12px;opacity:.7;border:1px solid rgba(127,127,127,.2)}
+@media(max-width:800px){
+.v8-shell{padding:16px}.v8-top{align-items:flex-start;flex-direction:column}
+.v8-top h1{font-size:28px}.v8-grid{grid-template-columns:1fr}.v8-score{width:100%;box-sizing:border-box}
+}

@@ -1,0 +1,51 @@
+[PASS] Git repository detected
+[PASS] Git branch detected
+[PASS] Frontend directory exists
+[PASS] package.json exists
+[PASS] main.jsx exists
+[PASS] V8 route integration detected
+
+up to date in 340ms
+[PASS] npm dependency installation
+vite/8.3.3 linux-x64 node-v24.21.0
+[PASS] Vite available
+
+> enterskill-hub-ui@1.0.0 build
+> vite build
+
+vite v8.3.3 building client environment for production...
+transforming...
+✓ 1918 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.45 kB │ gzip:   0.31 kB
+dist/assets/index-_pXmo-xy.css     32.44 kB │ gzip:   7.01 kB
+dist/assets/index-C6A3q7sQ.js   1,102.44 kB │ gzip: 299.35 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 681ms
+[PASS] Frontend production build
+[PASS] Backend directory exists
+[PASS] Python available
+[PASS] Python syntax compilation
+Traceback (most recent call last):
+  File "/workspaces/Skillindian-hub/backend/manage.py", line 5, in <module>
+    from django.core.management import execute_from_command_line
+ModuleNotFoundError: No module named 'django'
+[FAIL] Django system check
+Traceback (most recent call last):
+  File "/workspaces/Skillindian-hub/backend/manage.py", line 5, in <module>
+    from django.core.management import execute_from_command_line
+ModuleNotFoundError: No module named 'django'
+[WARN] Migration changes detected or migration check failed
+[PASS] No tracked environment file detected by basic scan
+[PASS] No environment file visible in Git status
+frontend/src/main.jsx:102:function CodeLab({page,onToast}){const [code,setCode]=useState(page.includes('python')?'def greet(name):\n    return f"Hello {name}"\n\nprint(greet("Developer"))':'function greet(name) {\n  return `Hello ${name}`;\n}\nconsole.log(greet("Developer"));');const [out,setOut]=useState('Run the example to see output.');return <div className="lab"><div className="editor"><div className="editorbar"><span>main.code</span><button onClick={()=>{setOut('Hello Developer\n✓ Example executed successfully');onToast('Code executed in demo sandbox')}}><Icon name="Play" size={14}/> Run</button></div><textarea value={code} onChange={e=>setCode(e.target.value)}/></div><div className="output"><div className="outputhead">OUTPUT <span>DEMO RUNTIME</span></div><pre>{out}</pre><div className="test"><Icon name="CheckCircle2"/> Interview test: explain every line in 30 seconds.</div></div></div>}
+[WARN] Debug statements detected in frontend source
+[PASS] frontend/src/upgrades/V8Doctor.jsx
+[PASS] frontend/src/upgrades/v8.css
+[PASS] scripts/v8-doctor.sh
