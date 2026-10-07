@@ -4,6 +4,7 @@ import {BrowserRouter,useLocation,useNavigate,useParams} from 'react-router-dom'
 import * as Icons from 'lucide-react';
 import './style.css';
 import V4CommandCenter from './upgrades/V4CommandCenter.jsx';
+import V5TutorialHub from './upgrades/V5TutorialHub.jsx';
 import './upgrades/v3.css';
 import V3CommandCenter from './upgrades/V3CommandCenter.jsx';
 
@@ -80,6 +81,7 @@ function App(){
 }
 
 function Page({page,onToast}){
+  if(page==='v5') return <V5TutorialHub/>;
   if(page==='v4') return <V4CommandCenter/>;
  if(page==='v3') return <V3CommandCenter/>;
  const [tab,setTab]=useState('Overview'); const [done,setDone]=useState(false); const [query,setQuery]=useState(''); const [score,setScore]=useState(72); const [dashboard,setDashboard]=useState(null); const [apiState,setApiState]=useState('');
