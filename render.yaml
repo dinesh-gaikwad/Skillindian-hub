@@ -6,7 +6,6 @@ services:
     dockerfilePath: ./Dockerfile
     dockerContext: .
     healthCheckPath: /api/health/
-    preDeployCommand: python manage.py migrate --noinput && python manage.py seed_demo
     envVars:
       - key: SECRET_KEY
         generateValue: true
