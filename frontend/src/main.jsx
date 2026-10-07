@@ -1,3 +1,4 @@
+import V12DisplaySettings from './upgrades/V12DisplaySettings.jsx';
 import V11EmailService from './upgrades/V11EmailService.jsx';
 import React,{useEffect,useMemo,useState} from 'react';
 import {createRoot} from 'react-dom/client';
@@ -87,6 +88,7 @@ function App(){
 }
 
 function Page({page,onToast}){
+  if(page==='display-settings') return <V12DisplaySettings/>;
   if(page==='email-service') return <V11EmailService/>;
   if(page==='settings') return <V10Settings/>;
   if(page==='profile') return <V9ProfileDashboard/>;
