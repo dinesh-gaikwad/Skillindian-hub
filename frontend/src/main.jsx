@@ -6,6 +6,7 @@ import './style.css';
 import V4CommandCenter from './upgrades/V4CommandCenter.jsx';
 import V5TutorialHub from './upgrades/V5TutorialHub.jsx';
 import V6DeepNotes from './upgrades/V6DeepNotes.jsx';
+import V7AssessmentHub from './upgrades/V7AssessmentHub.jsx';
 import './upgrades/v3.css';
 import V3CommandCenter from './upgrades/V3CommandCenter.jsx';
 
@@ -82,6 +83,7 @@ function App(){
 }
 
 function Page({page,onToast}){
+  if(page==='v7') return <V7AssessmentHub/>;
   if(page==='v6') return <V6DeepNotes/>;
   if(page==='v5') return <V5TutorialHub/>;
   if(page==='v4') return <V4CommandCenter/>;
