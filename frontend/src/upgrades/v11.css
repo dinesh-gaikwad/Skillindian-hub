@@ -1,0 +1,25 @@
+.v11-page{min-height:100vh;padding:32px;max-width:1250px;margin:auto}
+.v11-hero{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:32px;border-radius:24px;background:linear-gradient(135deg,#101828,#344054);color:white;margin-bottom:24px}
+.v11-pill{font-size:12px;letter-spacing:1px;opacity:.8}
+.v11-hero h1{font-size:42px;margin:12px 0 8px}
+.v11-hero p{margin:0;opacity:.8}
+.v11-status{padding:18px 24px;border:1px solid #ffffff33;border-radius:16px;text-align:center;font-size:11px;letter-spacing:1px}
+.v11-status b{font-size:20px}
+.v11-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.v11-card{padding:24px;border:1px solid #e4e7ec;border-radius:20px;background:#fff;box-shadow:0 8px 30px #1018280d}
+.v11-icon{font-size:28px}
+.v11-card h3{margin:14px 0 8px}
+.v11-card p{color:#667085;min-height:44px}
+.v11-ready{font-size:11px;font-weight:700}
+.v11-test{margin-top:24px;padding:28px;border:1px solid #e4e7ec;border-radius:20px;background:#fff}
+.v11-form{display:flex;gap:10px}
+.v11-form input{flex:1;padding:13px;border:1px solid #d0d5dd;border-radius:10px}
+.v11-form button{border:0;border-radius:10px;padding:13px 20px;cursor:pointer}
+.v11-toast{margin-top:14px;padding:12px;border-radius:10px;background:#ecfdf3}
+@media(max-width:800px){
+ .v11-page{padding:16px}
+ .v11-hero{flex-direction:column;align-items:flex-start}
+ .v11-hero h1{font-size:32px}
+ .v11-grid{grid-template-columns:1fr}
+ .v11-form{flex-direction:column}
+}

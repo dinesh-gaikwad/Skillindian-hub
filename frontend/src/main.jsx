@@ -1,3 +1,4 @@
+import V11EmailService from './upgrades/V11EmailService.jsx';
 import React,{useEffect,useMemo,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {BrowserRouter,useLocation,useNavigate,useParams} from 'react-router-dom';
@@ -86,6 +87,7 @@ function App(){
 }
 
 function Page({page,onToast}){
+  if(page==='email-service') return <V11EmailService/>;
   if(page==='settings') return <V10Settings/>;
   if(page==='profile') return <V9ProfileDashboard/>;
   if(page==='v8') return <V8Doctor/>;
