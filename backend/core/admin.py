@@ -1,3 +1,4 @@
 from django.contrib import admin
 from .models import *
-admin.site.register([Profile,Course,Enrollment,InterviewQuestion,Attempt,Certificate,MentorSession,ProjectSubmission,AIRecommendation])
+for model in [Profile,Course,Enrollment,InterviewQuestion,Attempt,Certificate,MentorSession,ProjectSubmission,AIRecommendation]:
+    admin.site.register(model)

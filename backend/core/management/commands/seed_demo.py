@@ -1,16 +1,36 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
-from core.models import Course,InterviewQuestion,Profile,AIRecommendation
+from core.models import Profile, Course, InterviewQuestion, AIRecommendation
+
+COURSES=[
+('Python Production','python-production','Python fundamentals, OOP, testing and clean architecture.','Beginner',36),
+('Django REST Engineering','django-rest','Django, DRF, JWT, permissions and production APIs.','Intermediate',42),
+('React Full Stack','react-full-stack','React components, hooks, routing and API integration.','Intermediate',38),
+('SQL & Database Engineering','sql-database','SQL, DBMS, indexes, transactions and schema design.','Intermediate',30),
+('AI Engineering','ai-engineering','Prompting, RAG, embeddings, evaluation and AI product patterns.','Advanced',34),
+('EntreSkill Hub Capstone','enterskill-capstone','Build the complete full-stack AI developer portfolio project.','Advanced',60),
+]
+QUESTIONS=[
+('Why Django for EntreSkill Hub?','Django provides batteries-included backend features, ORM, authentication integration and a mature ecosystem.','Django','Medium'),
+('How does JWT authentication work?','The user logs in, the server issues an access token and refresh token, and the client sends the access token with protected API requests.','Security','Medium'),
+('How would you scale this project?','Add caching, database indexes, pagination, async workers, object storage and horizontal application replicas behind a load balancer.','System Design','Hard'),
+('Why React?','React makes UI composition predictable through reusable components, state management and a strong ecosystem for SPA development.','React','Easy'),
+('How do you prevent unauthorized enrollment access?','The API derives the user from the JWT and filters enrollment queries by request.user, preventing cross-user access.','Django','Hard'),
+]
 class Command(BaseCommand):
-    help='Seed demo data for the EntreSkill Hub portfolio demo.'
+    help='Create safe demo data for EntreSkill Hub V2.'
     def handle(self,*args,**kwargs):
         user,_=User.objects.get_or_create(username='demo',defaults={'email':'demo@enterskill.local'})
-        if not user.has_usable_password(): user.set_password('Demo@12345'); user.save()
+        user.set_password('Demo@12345'); user.save()
         Profile.objects.get_or_create(user=user,defaults={'headline':'Full Stack AI Developer','target_role':'Full Stack AI Developer','readiness':78})
-        courses=[('Python Interview Engineering','python-interview','Python logic, OOP and coding interview patterns.'),('Django REST Production','django-rest','Build secure REST APIs with Django REST Framework.'),('React Frontend Systems','react-systems','Build reusable React interfaces and state flows.'),('SQL Performance Lab','sql-performance','Master joins, indexes, transactions and optimization.'),('AI Engineering Lab','ai-engineering','Build practical AI features with evaluation-first design.'),('EntreSkill Hub Project','enterskill-project','Deep dive into the portfolio project architecture.')]
-        for t,s,d in courses: Course.objects.get_or_create(slug=s,defaults={'title':t,'description':d,'level':'Interview','duration_hours':12})
-        qs=[('Why Django for a full-stack platform?','Django gives Python developers structured routing, ORM, security features and a mature ecosystem.','Django','Medium'),('Explain JWT authentication.','The user authenticates, receives tokens, and sends an access token with protected API requests.','Security','Medium'),('How would you scale EntreSkill Hub?','Start with stateless API instances, caching, indexed database queries, background jobs and observability, then split services only where justified.','System Design','Hard'),('Why React?','React enables reusable components and interactive client-side experiences while the backend remains API-driven.','React','Easy')]
-        for q,a,t,d in qs: InterviewQuestion.objects.get_or_create(question=q,defaults={'answer':a,'topic':t,'difficulty':d})
-        recs=[('skill-gap','Master REST API Security','Your target role needs strong backend API reasoning.','1'),('project','Practice Architecture Defense','Be ready to explain every EntreSkill Hub layer.','1'),('interview','Run a Project Mock','Project cross-questioning is a high-value interview round.','2')]
-        for k,t,r,p in recs: AIRecommendation.objects.get_or_create(user=user,kind=k,title=t,defaults={'reason':r,'priority':int(p)})
-        self.stdout.write(self.style.SUCCESS('Demo data ready. Login: demo / Demo@12345'))
+        for title,slug,desc,level,hours in COURSES:
+            Course.objects.get_or_create(slug=slug,defaults={'title':title,'description':desc,'level':level,'duration_hours':hours,'published':True})
+        for q,a,t,d in QUESTIONS:
+            InterviewQuestion.objects.get_or_create(question=q,defaults={'answer':a,'topic':t,'difficulty':d,'is_active':True})
+        for kind,title,reason,priority in [
+            ('skill','REST API security','Practice JWT, authorization and object-level access control.',1),
+            ('project','Complete capstone','Finish enrollment, progress, interview scoring and certificates.',1),
+            ('interview','System design drill','Practice scaling, caching, queues and database trade-offs.',2),
+        ]:
+            AIRecommendation.objects.get_or_create(user=user,title=title,defaults={'kind':kind,'reason':reason,'priority':priority})
+        self.stdout.write(self.style.SUCCESS('Demo ready: demo / Demo@12345'))
