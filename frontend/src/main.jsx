@@ -5,6 +5,7 @@ import * as Icons from 'lucide-react';
 import './style.css';
 import V4CommandCenter from './upgrades/V4CommandCenter.jsx';
 import V5TutorialHub from './upgrades/V5TutorialHub.jsx';
+import V6DeepNotes from './upgrades/V6DeepNotes.jsx';
 import './upgrades/v3.css';
 import V3CommandCenter from './upgrades/V3CommandCenter.jsx';
 
@@ -81,6 +82,7 @@ function App(){
 }
 
 function Page({page,onToast}){
+  if(page==='v6') return <V6DeepNotes/>;
   if(page==='v5') return <V5TutorialHub/>;
   if(page==='v4') return <V4CommandCenter/>;
  if(page==='v3') return <V3CommandCenter/>;

@@ -1,0 +1,307 @@
+.v6{
+  min-height:100vh;
+  max-width:1600px;
+  margin:auto;
+  padding:28px;
+  box-sizing:border-box;
+}
+
+.v6-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:24px;
+}
+
+.v6-header>div:first-child>span{
+  font-size:10px;
+  letter-spacing:1.8px;
+  font-weight:800;
+  opacity:.6;
+}
+
+.v6 h1{
+  font-size:34px;
+  margin:7px 0;
+}
+
+.v6-header p{
+  margin:0;
+  opacity:.6;
+}
+
+.v6-score{
+  padding:14px 22px;
+  border:1px solid rgba(128,128,128,.25);
+  border-radius:16px;
+  text-align:center;
+}
+
+.v6-score strong,
+.v6-score small{
+  display:block;
+}
+
+.v6-score strong{
+  font-size:24px;
+}
+
+.v6-score small{
+  font-size:9px;
+  opacity:.6;
+}
+
+.v6-layout{
+  display:grid;
+  grid-template-columns:280px minmax(0,1fr);
+  gap:20px;
+}
+
+.v6-sidebar{
+  padding:14px;
+  border:1px solid rgba(128,128,128,.22);
+  border-radius:18px;
+  background:rgba(128,128,128,.04);
+  align-self:start;
+  position:sticky;
+  top:20px;
+  max-height:calc(100vh - 40px);
+  overflow:auto;
+}
+
+.v6-sidebar input{
+  width:100%;
+  box-sizing:border-box;
+  padding:11px;
+  border-radius:10px;
+  border:1px solid rgba(128,128,128,.25);
+  background:transparent;
+  margin-bottom:10px;
+}
+
+.v6-sidebar button{
+  display:block;
+  width:100%;
+  text-align:left;
+  border:0;
+  background:transparent;
+  border-radius:11px;
+  padding:10px;
+  cursor:pointer;
+  margin-bottom:4px;
+}
+
+.v6-sidebar button:hover,
+.v6-sidebar button.active{
+  background:rgba(99,102,241,.12);
+}
+
+.v6-sidebar b,
+.v6-sidebar small{
+  display:block;
+}
+
+.v6-sidebar b{
+  font-size:11px;
+}
+
+.v6-sidebar small{
+  margin-top:3px;
+  font-size:9px;
+  opacity:.5;
+}
+
+.v6-course,
+.v6-note{
+  border:1px solid rgba(128,128,128,.22);
+  border-radius:20px;
+  background:rgba(128,128,128,.04);
+}
+
+.v6-course{
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.v6-course span{
+  font-size:10px;
+  opacity:.6;
+}
+
+.v6-course h2{
+  margin:6px 0 0;
+}
+
+.v6-course strong{
+  font-size:12px;
+  opacity:.6;
+}
+
+.v6-tabs{
+  display:flex;
+  gap:7px;
+  overflow:auto;
+  margin-bottom:10px;
+}
+
+.v6-tabs button,
+.v6-lessons button{
+  white-space:nowrap;
+  padding:9px 12px;
+  border-radius:9px;
+  border:1px solid rgba(128,128,128,.2);
+  background:transparent;
+  cursor:pointer;
+  font-size:10px;
+}
+
+.v6-tabs button.active,
+.v6-lessons button.selected{
+  background:rgba(99,102,241,.15);
+}
+
+.v6-lessons{
+  display:flex;
+  gap:7px;
+  overflow:auto;
+  margin-bottom:12px;
+  padding-bottom:3px;
+}
+
+.v6-note{
+  padding:28px;
+}
+
+.v6-note-title{
+  padding-bottom:20px;
+  margin-bottom:22px;
+  border-bottom:1px solid rgba(128,128,128,.18);
+}
+
+.v6-note-title span{
+  font-size:10px;
+  letter-spacing:1.4px;
+  opacity:.55;
+}
+
+.v6-note-title h2{
+  margin:6px 0 0;
+  font-size:28px;
+}
+
+.v6-note section{
+  margin-bottom:25px;
+}
+
+.v6-note h3{
+  font-size:14px;
+}
+
+.v6-note p,
+.v6-note li{
+  line-height:1.7;
+  opacity:.78;
+}
+
+.v6-note pre{
+  background:#0b1020;
+  color:#e5e7eb;
+  padding:18px;
+  border-radius:12px;
+  overflow:auto;
+  line-height:1.6;
+}
+
+.v6-box,
+.v6-cheat{
+  padding:16px;
+  border-radius:12px;
+  background:rgba(99,102,241,.08);
+  border:1px solid rgba(99,102,241,.16);
+  line-height:1.7;
+}
+
+.v6-questions{
+  display:grid;
+  gap:8px;
+}
+
+.v6-questions div{
+  display:flex;
+  gap:12px;
+  padding:13px;
+  border-radius:11px;
+  background:rgba(128,128,128,.06);
+}
+
+.v6-questions b{
+  min-width:25px;
+}
+
+.v6-nav{
+  display:flex;
+  justify-content:space-between;
+  border-top:1px solid rgba(128,128,128,.18);
+  padding-top:20px;
+}
+
+.v6-nav button{
+  padding:11px 16px;
+  border:1px solid rgba(128,128,128,.25);
+  border-radius:10px;
+  background:transparent;
+  cursor:pointer;
+}
+
+.v6-nav button:disabled{
+  opacity:.35;
+  cursor:not-allowed;
+}
+
+@media(max-width:900px){
+  .v6-layout{
+    grid-template-columns:1fr;
+  }
+
+  .v6-sidebar{
+    position:static;
+    max-height:none;
+  }
+}
+
+@media(max-width:600px){
+  .v6{
+    padding:15px;
+  }
+
+  .v6-header{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .v6-course{
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .v6-note{
+    padding:18px;
+  }
+
+  .v6-note-title h2{
+    font-size:23px;
+  }
+
+  .v6-nav{
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .v6-nav button{
+    width:100%;
+  }
+}
