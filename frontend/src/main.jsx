@@ -3,6 +3,8 @@ import {createRoot} from 'react-dom/client';
 import {BrowserRouter,useLocation,useNavigate,useParams} from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import './style.css';
+import './upgrades/v3.css';
+import V3CommandCenter from './upgrades/V3CommandCenter.jsx';
 
 const API=import.meta.env.VITE_API_URL||'/api';
 const token=()=>localStorage.getItem('esh_access');
@@ -11,6 +13,7 @@ function clearSession(){localStorage.removeItem('esh_access');localStorage.remov
 
 
 const groups=[
+ {id:'v3',label:'V3 Command Center',icon:'Sparkles',pages:['v3']},
  {id:'foundation',label:'Foundation',icon:'GraduationCap',pages:['dashboard','profile','resume','resume-score','english','english-vocab','english-speaking','interview-english','communication','career-goals']},
  {id:'python',label:'Python & OOP',icon:'Code2',pages:['python-roadmap','python-basics','python-datatypes','python-functions','python-modules','python-exceptions','python-files','python-oop','python-advanced','python-lab']},
  {id:'web',label:'Web & React',icon:'Globe2',pages:['html5','css3','javascript','javascript-async','react','react-hooks','react-state','react-routing','frontend-lab','ui-system']},
@@ -34,6 +37,7 @@ git:['Git','Version control fundamentals'],github:['GitHub','Collaboration and s
 ['dsa-roadmap']:['DSA Roadmap','Interview problem-solving path'],complexity:['Complexity','Big-O reasoning'],arrays:['Arrays','Patterns and problems'],strings:['Strings','String algorithms'],hashing:['Hashing','Fast lookup patterns'],['linked-list']:['Linked List','Pointer-based structures'],['stack-queue']:['Stack & Queue','LIFO/FIFO patterns'],trees:['Trees','Hierarchical data structures'],graphs:['Graphs','Traversal and shortest paths'],['dynamic-programming']:['Dynamic Programming','Optimize overlapping subproblems'],
 ['mock-dashboard']:['Interview Arena','Live readiness dashboard'],['mock-python']:['Python Mock','Python technical round'],['mock-django']:['Django Mock','Backend technical round'],['mock-react']:['React Mock','Frontend technical round'],['mock-sql']:['SQL Mock','Database technical round'],['mock-system-design']:['System Design Mock','Architecture round'],['mock-project']:['Project Mock','EntreSkill Hub deep dive'],['coding-round']:['Coding Round','Timed coding interview'],['hr-round']:['HR Round','Behavioral interview'],['final-interview']:['Final Interview','Full 10 LPA simulation']
 };
+pageMeta.v3=['V3 AI Developer Command Center','Premium AI developer career command center'];
 const allPages=groups.flatMap(g=>g.pages);
 const title=(id)=>pageMeta[id]?.[0]||id.replaceAll('-',' ');
 
@@ -74,6 +78,7 @@ function App(){
 }
 
 function Page({page,onToast}){
+ if(page==='v3') return <V3CommandCenter/>;
  const [tab,setTab]=useState('Overview'); const [done,setDone]=useState(false); const [query,setQuery]=useState(''); const [score,setScore]=useState(72); const [dashboard,setDashboard]=useState(null); const [apiState,setApiState]=useState('');
  const meta=pageMeta[page]||[title(page),'Interactive learning workspace']; const isMock=page.startsWith('mock-')||page==='coding-round'||page==='final-interview'; const isProject=page.startsWith('project-'); const isAI=page.startsWith('ai-')||['rag','embeddings','vector-search'].includes(page); const isCode=['python-lab','frontend-lab','backend-lab','data-lab','ai-lab','coding-round'].includes(page);
  useEffect(()=>{if(page==='dashboard'){apiFetch('/dashboard/').then(setDashboard).catch(()=>{})}},[page]);
