@@ -3,6 +3,7 @@ import {createRoot} from 'react-dom/client';
 import {BrowserRouter,useLocation,useNavigate,useParams} from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import './style.css';
+import V9ProfileDashboard from './upgrades/V9ProfileDashboard.jsx';
 import V8Doctor from './upgrades/V8Doctor.jsx';
 import V4CommandCenter from './upgrades/V4CommandCenter.jsx';
 import V5TutorialHub from './upgrades/V5TutorialHub.jsx';
@@ -84,6 +85,7 @@ function App(){
 }
 
 function Page({page,onToast}){
+  if(page==='profile') return <V9ProfileDashboard/>;
   if(page==='v8') return <V8Doctor/>;
   if(page==='v7') return <V7AssessmentHub/>;
   if(page==='v6') return <V6DeepNotes/>;
